@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link
+      rel="stylesheet"
+      href="dist/theme/black.css"
+      id="linkPresentationTheme"
+    />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown>
+          <textarea data-template>
+            # Slides.md
+            Simple markdown presentation tool
+
+            <sup><sub>Made with [Reveal.js](https://revealjs.com/),
+            [Ace](https://ace.c9.io/) and
+            [Docusaurus](https://docusaurus.io/)<sub/></sup>
+
+            ---
+
+            ## Documentation
+
+            Check out the [documentation](link) for further details.
+
+            <img data-src="https://media2.giphy.com/media/JGSCwTt87agIU/giphy.gif?cid=ecf05e47yx9lhf5x28blnmheg4rtxuzuppqwuxqy41ftcft3&rid=giphy.gif&ct=g" />
+          </textarea>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom],
+      });
+    </script>
+  </body>
+</html>

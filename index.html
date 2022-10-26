@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+
+    <!-- Custom CSS -->
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+
+    <title>Slides.md - Simple markdown presentation tool</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">slides.md</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="https://docs.slides.md"
+                >Documentation</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Application -->
+    <div class="d-flex flex-column flex-lg-row justify-content-between h-100">
+      <div class="d-flex flex-column h-100 flex-fill">
+        <div class="my-2">
+          <button
+            class="btn btn-lg mx-1"
+            data-bs-toggle="modal"
+            data-bs-target="#editorConfigurations"
+          >
+            <i class="bi bi-gear"></i>
+          </button>
+          <button class="btn btn-lg mx-1" id="exportPresentationButton">
+            <i class="bi bi-box-arrow-down"></i>
+          </button>
+          <button
+            class="btn btn-lg mx-1"
+            data-bs-toggle="modal"
+            data-bs-target="#importPresentation"
+          >
+            <i class="bi bi-box-arrow-in-up"></i>
+          </button>
+        </div>
+
+        <div class="flex-grow-1" id="editor">Hello, world!</div>
+      </div>
+      <div class="d-flex flex-column h-100 flex-fill">
+        <div class="my-2">
+          <button
+            class="btn btn-lg mx-1"
+            data-bs-toggle="modal"
+            data-bs-target="#presentationConfigurations"
+          >
+            <i class="bi bi-brush"></i>
+          </button>
+          <button
+            type="button"
+            class="btn btn-lg"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            data-bs-title="Click on the presentation and press »F«."
+          >
+            <i class="bi bi-arrows-fullscreen"></i>
+          </button>
+        </div>
+
+        <iframe
+          src="reveal.js-master/index.html"
+          class="flex-grow-1"
+          id="iframePresentation"
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- Editor Configurations Modal -->
+    <div class="modal fade" id="editorConfigurations">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5">Editor Configurations</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- Tabs -->
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <button
+                  class="nav-link active"
+                  id="theme-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#theme-tab-pane"
+                  type="button"
+                >
+                  Theme
+                </button>
+              </li>
+              <li class="nav-item">
+                <button
+                  class="nav-link"
+                  id="font-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#font-tab-pane"
+                  type="button"
+                >
+                  Font Size
+                </button>
+              </li>
+            </ul>
+            <!-- Tab Content -->
+            <div class="tab-content mt-2">
+              <div class="tab-pane fade show active" id="theme-tab-pane">
+                Select a new theme from the dropdown below and apply.
+                <form id="editorThemeForm">
+                  <select class="form-select my-3" name="editorTheme">
+                    <optgroup label="Bright">
+                      <option value="github">GitHub</option>
+                      <option value="solarized_light">Solarized Light</option>
+                      <option value="textmate">TextMate</option>
+                      <option value="kuroir">Kuroir</option>
+                    </optgroup>
+                    <optgroup label="Dark">
+                      <option value="dracula">Dracula</option>
+                      <option value="monokai" selected>Monokai</option>
+                      <option value="terminal">Terminal</option>
+                      <option value="tomorrow_night">Tomorrow Night</option>
+                    </optgroup>
+                  </select>
+                  <button class="btn btn-primary" type="submit">Apply</button>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="font-tab-pane">
+                Select a new font size from the dropdown below and apply.
+                <form id="editorFontSizeForm">
+                  <input
+                    type="number"
+                    class="form-control my-3"
+                    name="editorFontSize"
+                    placeholder="Font size in px"
+                    value="18"
+                  />
+                  <button class="btn btn-primary" type="submit">Apply</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Presentation Configurations Modal -->
+    <div class="modal fade" id="presentationConfigurations">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5">Presentation Configurations</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- Tabs -->
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <button
+                  class="nav-link active"
+                  id="presentation-theme-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#presentation-theme-tab-pane"
+                  type="button"
+                >
+                  Theme
+                </button>
+              </li>
+              <li class="nav-item">
+                <button
+                  class="nav-link"
+                  id="transitions-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#transitions-tab-pane"
+                  type="button"
+                >
+                  Transitions
+                </button>
+              </li>
+              <li class="nav-item">
+                <button
+                  class="nav-link"
+                  id="options-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#options-tab-pane"
+                  type="button"
+                >
+                  Options
+                </button>
+              </li>
+            </ul>
+            <!-- Tab Content -->
+            <div class="tab-content mt-2">
+              <div
+                class="tab-pane fade show active"
+                id="presentation-theme-tab-pane"
+              >
+                Select a new theme from the dropdown below and apply.
+                <form id="presentationThemeForm">
+                  <select class="form-select my-3" name="presentationTheme">
+                    <optgroup label="Bright">
+                      <option value="beige">Beige</option>
+                      <option value="serif">Serif</option>
+                      <option value="simple">Simple</option>
+                      <option value="sky">Sky</option>
+                      <option value="solarized">Solarized</option>
+                      <option value="white">White</option>
+                    </optgroup>
+                    <optgroup label="Dark">
+                      <option value="black" selected>Black</option>
+                      <option value="blood">Blood</option>
+                      <option value="league">League</option>
+                      <option value="moon">Moon</option>
+                      <option value="night">Night</option>
+                    </optgroup>
+                  </select>
+                  <button class="btn btn-primary" type="submit">Apply</button>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="transitions-tab-pane">
+                Select a new transition from the dropdown below and apply.
+                <form id="presentationTransitionForm">
+                  <select
+                    class="form-select my-3"
+                    name="presentationTransition"
+                  >
+                    <option value="none">None</option>
+                    <option value="concave">Concave</option>
+                    <option value="convex">Convex</option>
+                    <option value="fade">Fade</option>
+                    <option value="slide" selected>Slide</option>
+                    <option value="zoom">Zoom</option>
+                  </select>
+                  <button class="btn btn-primary" type="submit">Apply</button>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="options-tab-pane">
+                <p class="mb-2">
+                  Change the options from the form below and apply.
+                </p>
+                <form id="presentationOptionsForm">
+                  Loading...
+                  <button class="btn btn-primary" type="submit">Apply</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Import Presentation Modal -->
+    <div class="modal fade" id="importPresentation">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5">Import Presentation</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Upload your presentation and continue where you left off.
+
+            <form id="presentationImportForm">
+              <input
+                class="form-control my-3"
+                type="file"
+                id="formFile"
+                name="presentationFile"
+                accept="text/plain, text/html, .md"
+              />
+              <button class="btn btn-primary">Import</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Ace Editor -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.11.2/ace.js"
+      integrity="sha512-AhCq6G80Ge/e6Pl3QTNGI2Je+6ixVVDmmE4Nui8/dHRBKxMUvjJxn6CYEcMQdTSxHreC3USOxTDrvUPLtN5J7w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Reveal.js -->
+    <script src="reveal.js-master/dist/reveal.js"></script>
+    <script src="reveal.js-master/plugin/notes/notes.js"></script>
+    <script src="reveal.js-master/plugin/markdown/markdown.js"></script>
+    <script src="reveal.js-master/plugin/highlight/highlight.js"></script>
+    <script src="reveal.js-master/plugin/zoom/zoom.js"></script>
+
+    <!-- Custom JS -->
+    <script src="index.js"></script>
+  </body>
+</html>
