@@ -34,7 +34,7 @@ const config = {
           // Remove this to remove the "edit this page" links.
           routeBasePath: "/",
           editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            "https://github.com/anonymouscoolguy/slides.md/tree/main/docs",
         },
         blog: false,
         theme: {
@@ -55,7 +55,7 @@ const config = {
         //},
         items: [
           {
-            href: "https://github.com/facebook/docusaurus",
+            href: "https://github.com/anonymouscoolguy/slides.md",
             label: "GitHub",
             position: "right",
           },
