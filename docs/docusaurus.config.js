@@ -34,7 +34,7 @@ const config = {
           // Remove this to remove the "edit this page" links.
           routeBasePath: "/",
           editUrl:
-            "https://github.com/anonymouscoolguy/slides.md/tree/main/docs",
+            "https://github.com/anonymouscoolguy/mdslides/tree/main/docs",
         },
         blog: false,
         theme: {
@@ -55,7 +55,7 @@ const config = {
         //},
         items: [
           {
-            href: "https://github.com/anonymouscoolguy/slides.md",
+            href: "https://github.com/anonymouscoolguy/mdslides",
             label: "GitHub",
             position: "right",
           },
