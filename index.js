@@ -54,7 +54,7 @@ Check out the [documentation](link) for further details.
 `;
 
 var editor;
-var editorTheme = localStorage.getItem("editorTheme") || "monokai";
+var editorTheme = localStorage.getItem("editorTheme") || "github";
 var editorFontSize = localStorage.getItem("editorFontSize") || "18";
 var editorContent =
   localStorage.getItem("editorContent") || initialPresentation;
