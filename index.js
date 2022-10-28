@@ -36,8 +36,7 @@ document
   .addEventListener("submit", importPresentation);
 
 // Global scope variables
-var initialPresentation = `
-# MDSlides
+var initialPresentation = `# MDSlides
 Simple markdown presentation tool
 
 <sup><sub>Made with [Reveal.js](https://revealjs.com/),
