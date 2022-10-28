@@ -5,7 +5,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "MDSlides",
   tagline: "Simple markdown presentation tool",
-  url: "https://mdslides.app",
+  url: "https://mdslides.app/",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
