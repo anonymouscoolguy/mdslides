@@ -37,7 +37,7 @@ document
 
 // Global scope variables
 var initialPresentation = `
-# Slides.md
+# MDSlides
 Simple markdown presentation tool
 
 <sup><sub>Made with [Reveal.js](https://revealjs.com/),

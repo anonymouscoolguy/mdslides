@@ -7,7 +7,7 @@ slug: /
 
 :::info
 
-Slides.md is solely the graphical interface connecting the editor and presentation framework together.
+MDSlides is solely the graphical interface connecting the editor and presentation framework together.
 
 The heavy-lifting is done by the following frameworks:
 
