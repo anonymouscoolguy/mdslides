@@ -85,7 +85,6 @@ function initializeEditor() {
   editor.session.setMode("ace/mode/markdown");
   document.getElementById("editor").style.fontSize = `${editorFontSize}px`;
   editor.session.on("change", updatePresentation);
-  console.log(editorContent);
   editor.setValue(editorContent, "-1"); // set value and move cursor to the start of the text
 }
 
