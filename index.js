@@ -47,7 +47,7 @@ Simple markdown presentation tool
 
 ## Documentation
 
-Check out the [documentation](link) for further details.
+Check out the [documentation](https://docs.mdslides.app/) for further details.
 
 <img data-src="https://media2.giphy.com/media/JGSCwTt87agIU/giphy.gif?cid=ecf05e47yx9lhf5x28blnmheg4rtxuzuppqwuxqy41ftcft3&rid=giphy.gif&ct=g" />
 `;
